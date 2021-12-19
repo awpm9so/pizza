@@ -1,0 +1,12 @@
+.form-order{
+    margin: auto;
+    width: 50%;
+}
+
+.form-order input{
+    margin: 5px;
+}
+
+.form-order button{
+    margin: 15px;
+}
