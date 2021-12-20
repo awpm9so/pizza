@@ -6,11 +6,13 @@
 
 
 @section('content')
-    <div id="app">
-        <app></app>
+    
+<div id="app">
+      
+        <card></card>
+      
     </div>
-
-
+<!--
       <div class="columns">
           <div class="column">
               <div class="card">
@@ -43,6 +45,6 @@
               </div>
           </div>
       </div>
-
-    <script scr="{{mix('js/app.js')}}"></script>
+      {{mix('js/app.js')}}
+-->
 @endsection

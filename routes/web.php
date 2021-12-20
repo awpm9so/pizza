@@ -12,3 +12,7 @@ Route::get('/order', [OrderController::class, 'order']);
 Route::get('/cart', [CartController::class, 'index']);
 
 Route::post('/order/check', [OrderController::class, 'order_check']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

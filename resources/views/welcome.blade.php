@@ -7,4 +7,6 @@ Welcome
 
 @section('content')
 <h1>Welcome</h1>
+
+<script src="./js/app.js"></script>
 @endsection

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
-
+  
 
     <div  class="navbar-menu">
         <div class="navbar-start">
@@ -26,5 +26,6 @@
     </div>
 
     @yield('content')
+    <script src="./js/app.js"></script>
 </body>
 </html>
