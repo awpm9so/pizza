@@ -8,10 +8,8 @@
 @section('content')
     
 <div id="app">
-      
-        <card></card>
-      
-    </div>
+      <app></app> 
+</div>
 <!--
       <div class="columns">
           <div class="column">
