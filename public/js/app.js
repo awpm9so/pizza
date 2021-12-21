@@ -5435,6 +5435,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _catalog_item_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./catalog-item.vue */ "./resources/js/components/catalog-item.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -5449,6 +5456,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "catalog",
   components: {
@@ -5456,45 +5464,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {},
   data: function data() {
-    return {
-      products: [{
-        id: "1",
-        title: "Ветчина и грибы",
-        description: " Ветчина, шампиньоны, увеличинная порция моцареллы, томатный соус",
-        img: "./img/1.jpeg"
-      }, {
-        id: "2",
-        title: "Гавайская",
-        description: "Ветчина, ананасы, моцарелла, томатный соус",
-        img: "./img/2.jpeg"
-      }, {
-        id: "3",
-        title: "Двойной цыпленок",
-        description: " Цыпленок, моцарелла, соус альфредо",
-        img: "./img/3.jpeg"
-      }, {
-        id: "4",
-        title: "Пепперони",
-        description: "Пикантная пепперони, увеличенная порция моцареллы, томатный соус",
-        img: "./img/4.jpeg"
-      }, {
-        id: "5",
-        title: "Мясная",
-        description: "Цыпленок, ветичина, пикантная пеппирони, острая чоризо, моцарелла, томатный соус",
-        img: "./img/5.jpeg"
-      }, {
-        id: "6",
-        title: "Четрые сезона",
-        description: "Увеличенная морция моцереллы, ветчина, пикантная пеппирони, кубики брынзы, томаты, шампиньоны, итальянские травы, томатный соус",
-        img: "./img/6.jpeg"
-      }]
-    };
+    return {};
   },
-  methods: {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)(['GET_PRODUCTS'])), {}, {
     showChildTitleInConsole: function showChildTitleInConsole(data) {
       console.log(data);
     }
-  }
+  }),
+  mounted: function mounted() {
+    this.GET_PRODUCTS();
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(['PRODUCTS']))
 });
 
 /***/ }),
@@ -5607,16 +5587,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  getters: {}
+
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
+  state: {
+    products: []
+  },
+  mutations: {
+    SET_PRODUCTS_TO_STATE: function SET_PRODUCTS_TO_STATE(state, products) {
+      state.products = products;
+    }
+  },
+  actions: {
+    GET_PRODUCTS: function GET_PRODUCTS(_ref) {
+      var commit = _ref.commit;
+      return axios__WEBPACK_IMPORTED_MODULE_0___default()('http://localhost:8000/getPizzaList', {
+        method: 'GET'
+      }).then(function (products) {
+        commit('SET_PRODUCTS_TO_STATE', products.data);
+        return products;
+      })["catch"](function (error) {
+        console.log(error);
+        return error;
+      });
+    }
+  },
+  getters: {
+    PRODUCTS: function PRODUCTS(state) {
+      return state.products;
+    }
+  }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
@@ -29338,7 +29344,7 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "catalog" },
-    _vm._l(_vm.products, function (product) {
+    _vm._l(_vm.PRODUCTS, function (product) {
       return _c("catalog-item", {
         key: product.id,
         attrs: { product_data: product },

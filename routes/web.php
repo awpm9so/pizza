@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PizzaListController;
 
 Route::get('/', [OrderController::class, 'index']);
 
@@ -13,6 +14,4 @@ Route::get('/cart', [CartController::class, 'index']);
 
 Route::post('/order/check', [OrderController::class, 'order_check']);
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/getPizzaList', [PizzaListController::class, 'getPizzaList']);
