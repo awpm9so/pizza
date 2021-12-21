@@ -1,27 +1,20 @@
 <template>
     <div class="main-wrapper">
-        <catalog />
-        <cart />
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
     </div>    
 </template>
 
 <script>
-import Catalog from './catalog.vue'
-import Cart from './cart.vue'
-
 
     export default {
         name: "main-wrapper",
-        components: {
-            Catalog,
-            Cart
-        },
         props:{},
         data(){
-            return {
-
-            }
+            return {}
         },
+        computed:{},
 
     }
 </script>
@@ -32,6 +25,8 @@ import Cart from './cart.vue'
     justify-content: center;
     align-content: center;
     margin: 0 auto;
-   
+}
+header{
+    height: 100px;
 }
 </style>

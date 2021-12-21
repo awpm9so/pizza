@@ -1,7 +1,7 @@
 
 require('./bootstrap');
 import store from './store'
-
+import router from './router'
 window.Vue = require('vue').default;
 
 
@@ -14,5 +14,6 @@ Vue.component('card', require('./components/Card.vue').default);
 
 const app = new Vue({
     el: '#app',
-    store
+    store,
+    router
 });

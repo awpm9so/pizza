@@ -9,22 +9,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
 </head>
 <body>
-  
-
-    <div  class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item" href="/">
-                    Главная
-            </a>
-        </div> 
-
-        <div class="navbar-end">
-             <a class="navbar-item" href="/cart">
-                    Корзина
-            </a>
-        </div>
-    </div>
-
     @yield('content')
     <script src="./js/app.js"></script>
 </body>

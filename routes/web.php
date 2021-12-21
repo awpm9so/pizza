@@ -10,7 +10,7 @@ Route::get('/', [OrderController::class, 'index']);
 
 Route::get('/order', [OrderController::class, 'order']);
 
-Route::get('/cart', [CartController::class, 'index']);
+//Route::get('/cart', [CartController::class, 'index']);
 
 Route::post('/order/check', [OrderController::class, 'order_check']);
 

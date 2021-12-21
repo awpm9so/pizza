@@ -1,14 +1,18 @@
 <template>
+<div>
+    <h1 class="catalog_title">Каталог</h1>
     <div class="catalog">
+        <router-link :to="{name:'cart',params: {cart_data:CART}}">
+             <div class="catalog_link-to-cart">Корзина: {{CART.length}}</div>
+        </router-link>
         <catalog-item 
             v-for="product in PRODUCTS"
             :key="product.id"
             :product_data="product"
-            @sendDataToParent="showChildTitleInConsole"
-
+            @addToCart="addToCart"
         />
-
     </div>
+</div>
 </template>
 
 <script>
@@ -28,10 +32,11 @@ import {mapActions, mapGetters} from 'vuex'
         },
         methods:{
             ...mapActions([
-                'GET_PRODUCTS'
+                'GET_PRODUCTS',
+                'ADD_TO_CART'
             ]),
-            showChildTitleInConsole(data){
-                console.log(data)
+            addToCart(data){
+                this.ADD_TO_CART(data)
             }
         },
         mounted(){
@@ -39,7 +44,8 @@ import {mapActions, mapGetters} from 'vuex'
         },
         computed:{
             ...mapGetters([
-                'PRODUCTS'
+                'PRODUCTS',
+                'CART'
             ])
         }
 
@@ -52,5 +58,15 @@ import {mapActions, mapGetters} from 'vuex'
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+}
+  .catalog_link-to-cart{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 16px;
+      border: solid 2px  #aeaeae;
+  }
+.catalog_title{
+    text-align: center;
 }
 </style>
