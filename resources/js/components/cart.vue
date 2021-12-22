@@ -71,6 +71,7 @@ import {mapActions, mapGetters} from 'vuex'
                 'CART',
                 'TOTAL_AMOUNT'
             ]),
+            //Общая сумма корзины
             cartTotalAmount(){
                 let total = 0;
                 

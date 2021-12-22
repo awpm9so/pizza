@@ -5257,9 +5257,6 @@ __webpack_require__.r(__webpack_exports__);
   props: {},
   data: function data() {
     return {};
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   }
 });
 
@@ -5408,6 +5405,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(['CART', 'TOTAL_AMOUNT'])), {}, {
+    //Общая сумма корзины
     cartTotalAmount: function cartTotalAmount() {
       var total = 0;
 
@@ -5624,23 +5622,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -30158,68 +30139,7 @@ var render = function () {
           })
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "order_form" }, [
-          _c("input", {
-            attrs: { type: "hidden", name: "total_amount" },
-            domProps: { value: _vm.TOTAL_AMOUNT },
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: {
-              type: "text",
-              name: "customer_name",
-              id: "customer_name",
-              placeholder: "Введите ваше имя",
-              required: "",
-            },
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: {
-              type: "text",
-              name: "customer_phone",
-              id: "customer_phone",
-              placeholder: "Введите номер телефона",
-              required: "",
-            },
-          }),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("input", {
-            attrs: {
-              type: "textarea",
-              name: "street",
-              id: "street",
-              placeholder: "Введите улицу",
-              required: "",
-            },
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: {
-              type: "text",
-              name: "building",
-              id: "building",
-              placeholder: "Введите дом",
-              required: "",
-            },
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: {
-              type: "text",
-              name: "flat",
-              id: "flat",
-              placeholder: "Введите квартиру",
-              required: "",
-            },
-          }),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("button", { attrs: { type: "submit" } }, [_vm._v("Заказать")]),
-        ]),
+        _vm._m(0),
       ],
       2
     ),
@@ -30230,49 +30150,78 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("select", { attrs: { name: "by_what_time", required: "" } }, [
-      _c("option", [_vm._v("Выберите время для доставки")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 08:00")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 09:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 10:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 11:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 12:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 13:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 14:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 15:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 16:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 17:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 18:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 19:00 ")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v(" 20:00 ")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "control" }, [
-      _c("textarea", {
-        staticClass: "textarea is-focused",
+    return _c("div", { staticClass: "order_form" }, [
+      _c("input", {
         attrs: {
-          name: "comment",
-          id: "comment",
-          placeholder: "Введите ваш коммментарий к заказу",
+          type: "text",
+          name: "customer_name",
+          id: "customer_name",
+          placeholder: "Введите ваше имя",
+          required: "",
         },
       }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: {
+          type: "text",
+          name: "customer_phone",
+          id: "customer_phone",
+          placeholder: "Введите номер телефона",
+          required: "",
+        },
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: {
+          type: "text",
+          name: "by_what_time",
+          id: "by_what_time",
+          placeholder: "Введите время для доставки",
+        },
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: {
+          type: "textarea",
+          name: "street",
+          id: "street",
+          placeholder: "Введите улицу",
+          required: "",
+        },
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: {
+          type: "text",
+          name: "building",
+          id: "building",
+          placeholder: "Введите дом",
+          required: "",
+        },
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: {
+          type: "text",
+          name: "flat",
+          id: "flat",
+          placeholder: "Введите квартиру",
+          required: "",
+        },
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "control" }, [
+        _c("textarea", {
+          staticClass: "textarea is-focused",
+          attrs: {
+            name: "comment",
+            id: "comment",
+            placeholder: "Введите ваш коммментарий к заказу",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Заказать")]),
     ])
   },
 ]

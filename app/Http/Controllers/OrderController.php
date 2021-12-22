@@ -27,13 +27,13 @@ class OrderController extends Controller
             'flat' => 'required'
         ]);
 
-        $time  = $request->get('by_what_time');
+
         
 
         $order = new Order();
         $order->customer_name = request()->get('customer_name');
         $order->customer_phone = $request->get('customer_phone');
-        $order->by_what_time = $request->get('by_what_time').data("Y-m-d");
+        $order->by_what_time = $request->get('by_what_time');
         $order->comment = $request->get('comment');
         $order->street = $request->get('street');
         $order->building = $request->get('building');

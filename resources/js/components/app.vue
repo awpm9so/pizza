@@ -16,9 +16,6 @@ import MainWrapper from './main-wrapper.vue'
                 
             }
         },
-        mounted() {
-            console.log('Component mounted.')
-        }
     }
 </script>
 

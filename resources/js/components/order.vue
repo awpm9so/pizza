@@ -12,26 +12,9 @@
         :order_item_data="item"
         />
         <div class="order_form">
-            <input type="hidden" name="total_amount" :value="TOTAL_AMOUNT">
             <input type="text" name="customer_name" id="customer_name" placeholder="Введите ваше имя" required>
             <input type="text" name="customer_phone" id="customer_phone" placeholder="Введите номер телефона" required>
-            <!-- <input type="datetime-local" name="by_what_time" id="by_what_time" placeholder="Введите время для доставки" > -->
-            <select name=by_what_time required>
-                <option>Выберите время для доставки</option>
-                <option value=""> 08:00</option>
-                <option value=""> 09:00 </option>
-                <option value=""> 10:00 </option>
-                <option value=""> 11:00 </option>
-                <option value=""> 12:00 </option>
-                <option value=""> 13:00 </option>
-                <option value=""> 14:00 </option>
-                <option value=""> 15:00 </option>
-                <option value=""> 16:00 </option>
-                <option value=""> 17:00 </option>
-                <option value=""> 18:00 </option>
-                <option value=""> 19:00 </option>
-                <option value=""> 20:00 </option>
-            </select>
+            <input type="text" name="by_what_time" id="by_what_time" placeholder="Введите время для доставки" > 
             <input type="textarea" name="street" id="street" placeholder="Введите улицу" required>
             <input type="text" name="building" id="building" placeholder="Введите дом" required>
             <input type="text" name="flat" id="flat" placeholder="Введите квартиру" required>      
