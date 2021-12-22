@@ -12,16 +12,22 @@
       @deleteFromCart="deleteFromCart(index)"
       @plusProduct="plusProduct(index)"
       @minusProduct="minusProduct(index)"
+      
       />
+      <div v-if="cart_data.length" class="cart_footer">
       <div class="cart_total_amount">
           <p>Общая сумма: {{cartTotalAmount}} &#8381;</p>
+      </div>
+      <router-link :to="{name: 'order'}">
+      <button @click="makingAnOrder">Оформить заказ</button>
+      </router-link>
       </div>
  </div>
 </template>
 
 <script>
 import CartItem from './cart-item.vue'
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "cart",
@@ -44,7 +50,8 @@ import {mapActions} from 'vuex'
             ...mapActions([
                 'DELETE_FROM_CART',
                 'PLUS_CART_PRODUCT',
-                'MINUS_CART_PRODUCT'
+                'MINUS_CART_PRODUCT',
+                'GET_TOTAL_AMOUNT'
             ]),
             deleteFromCart(index){
                 this.DELETE_FROM_CART(index)
@@ -54,9 +61,16 @@ import {mapActions} from 'vuex'
             },
             minusProduct(index){
                 this.MINUS_CART_PRODUCT(index)
+            },
+            makingAnOrder(data){
+                this.GET_TOTAL_AMOUNT(data)
             }
         },
         computed:{
+            ...mapGetters([
+                'CART',
+                'TOTAL_AMOUNT'
+            ]),
             cartTotalAmount(){
                 let total = 0;
                 
@@ -75,8 +89,10 @@ import {mapActions} from 'vuex'
     text-align: center;
 }
 .cart_total_amount{
-    position: sticky;
-    bottom: 8px;
     font-size: 18px;
+}
+.cart_footer{
+    display: flex;
+    justify-content: space-between;
 }
 </style>

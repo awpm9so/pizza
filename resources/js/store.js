@@ -8,7 +8,8 @@ Vue.use(Vuex)
 let store = new Vuex.Store({
  state:{
      products:[],
-     cart:[]
+     cart:[],
+     total_amount: 0
  },
  mutations:{
     SET_PRODUCTS_TO_STATE: (state, products) => {
@@ -44,6 +45,14 @@ let store = new Vuex.Store({
         if (state.cart[index].qty > 1){
             state.cart[index].qty--
         }
+    },
+    GET_TOTAL_AMOUNT: (state, data) =>{
+        let total = 0;
+                
+        for (let item of state.cart){
+            total+=item.price * item.qty
+        }
+        state.total_amount = total
     }
  },
  actions:{
@@ -71,6 +80,9 @@ let store = new Vuex.Store({
      },
      MINUS_CART_PRODUCT({commit}, index){
         commit('MINUS_PRODUCT', index)
+     },
+     GET_TOTAL_AMOUNT({commit}, data){
+        commit('GET_TOTAL_AMOUNT', data)
      }
  },
  getters:{
@@ -79,6 +91,9 @@ let store = new Vuex.Store({
      },
      CART(state){
          return state.cart;
+     },
+     TOTAL_AMOUNT(state){
+         return state.total_amount
      }
  },
  

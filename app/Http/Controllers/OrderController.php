@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Models\Order;
 
+
 class OrderController extends Controller
 {
     public function index(){
         return view('index');
     }
 
-    public function order(){
-        return view('order');
+    public function successfulOrder(){
+        return view('successfulOrder');
     }
 
     public function order_check(Request $request){
@@ -26,15 +27,19 @@ class OrderController extends Controller
             'flat' => 'required'
         ]);
 
-        $order = new Order();
-        $order->customer_name = $request->input('customer_name');
-        $order->customer_phone = $request->input('customer_phone');
-        $order->by_what_time = $request->input('by_what_time');
-        $order->comment = $request->input('comment');
-        $order->street = $request->input('street');
-        $order->building = $request->input('building');
-        $order->flat = $request->input('flat');
+        $time  = $request->get('by_what_time');
+        
 
+        $order = new Order();
+        $order->customer_name = request()->get('customer_name');
+        $order->customer_phone = $request->get('customer_phone');
+        $order->by_what_time = $request->get('by_what_time').data("Y-m-d");
+        $order->comment = $request->get('comment');
+        $order->street = $request->get('street');
+        $order->building = $request->get('building');
+        $order->flat = $request->get('flat');
         $order->save();
+        
+        return redirect()->route('successfulOrder');
     }
 }

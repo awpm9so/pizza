@@ -37,7 +37,7 @@ import {mapActions, mapGetters} from 'vuex'
             ]),
             addToCart(data){
                 this.ADD_TO_CART(data)
-            }
+            },
         },
         mounted(){
             this.GET_PRODUCTS()
@@ -57,7 +57,7 @@ import {mapActions, mapGetters} from 'vuex'
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items:center;
 }
   .catalog_link-to-cart{
       position: absolute;

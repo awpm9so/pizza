@@ -46,6 +46,7 @@
     box-shadow: 0 0 8px 0 #e0e0e0;
     padding: 16px;
     margin-bottom: 16px;
+
 }
 .catalog-item_title{
     font-weight: 600;  
